@@ -37,4 +37,6 @@ urlpatterns = [
     path('api/tasks/',TaskListCreateView.as_view()),
 
     path('api/tasks/<int:id>/',TaskRetrieveUpdateDeleteView.as_view()),
+
+    path('api/jwt_logout/',JWT_Logout.as_view()),
 ]

@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from notes_app.models import NotesDb,TaskDb
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 # Create your views here.
@@ -112,3 +113,19 @@ class TaskRetrieveUpdateDeleteView(APIView):
         task_obj=self.get_task(request,id)
         task_obj.delete()
         return Response("Task Deleted Successfully...!")
+
+class JWT_Logout(APIView):
+    permission_classes=[IsAuthenticated]
+
+    def post(self,request):
+        try:
+            refresh_token=request.data.get('refresh')
+            token=RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({
+                "Message": "Logout Successful..!"
+            })
+        except Exception:
+            return Response({
+                "Error" : "Invalid Refresh Token"
+            })
