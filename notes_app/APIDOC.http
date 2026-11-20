@@ -1,0 +1,120 @@
+###     API for add Users
+POst http://127.0.0.1:8000/api/register/ 
+Content-Type: application/json
+
+{
+    "username" : "Varun",
+    "email" : "varun@gmail.com",
+    "password" : "varun@123"
+}
+
+### API for Generate Token
+POst http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+    "username" : "Anu",
+    "password" : "anu@123"
+}
+
+
+###  List the Notes Using Tokens
+GET  http://127.0.0.1:8000/api/notes/
+Accept: application/json
+Authorization: Token 6b981172d1467f7edfcd2b934652cd2bd8785429
+
+### Add Notes 
+POST  http://127.0.0.1:8000/api/notes/
+Content-Type: application/json
+Authorization: Token 6b981172d1467f7edfcd2b934652cd2bd8785429
+
+{
+    "title" : "Introduction to Python",
+    "description" : "Basic python programs such as Datatypes,looping statements and oop concepts.."
+}
+
+### Get a single Note
+GET  http://127.0.0.1:8000/api/notes/1/
+Accept: application/json
+Authorization: Token 6b981172d1467f7edfcd2b934652cd2bd8785429
+
+### update notes
+PUT   http://127.0.0.1:8000/api/notes/1/
+Content-Type: application/json
+Authorization: Token 6b981172d1467f7edfcd2b934652cd2bd8785429
+
+{
+    "title" : "Introduction Databases",
+    "description" : "Insertion,deletion and updation  operations using SQL Queries.."
+}
+
+### Delete Notes
+DELETE http://127.0.0.1:8000/api/notes/1/
+Authorization: Token 6b981172d1467f7edfcd2b934652cd2bd8785429
+
+
+### Logout Token
+POST  http://127.0.0.1:8000/api/logout/
+Content-Type: application/json
+Authorization: Token 6b981172d1467f7edfcd2b934652cd2bd8785429
+
+### API for JWT login
+POST  http://127.0.0.1:8000/api/jwt_login/
+Content-Type: application/json
+
+{
+    "username" : "Varun",
+    "password" : "varun@123"
+}
+
+### List all tasks Using JWT Token
+GET http://127.0.0.1:8000/api/tasks/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0ODc5LCJpYXQiOjE3OTUxNjQ1NzksImp0aSI6IjUzOGY2ZTNkMjYwODRhY2U4YTExN2FlMGNhYjUzNmI3IiwidXNlcl9pZCI6IjQifQ.gxpEqTKvZXefsJnHPyLKbeDQU-P3PqWK7c1Oo3Z7-jY
+
+
+###
+POST  http://127.0.0.1:8000/api/refresh/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTYyODkxLCJpYXQiOjE3OTUxNjI1OTEsImp0aSI6IjFkMTE4MmM5NzI4MTQ3ZDA5MDdhZTZiMWUyM2IwZTYwIiwidXNlcl9pZCI6IjQifQ.OiS7WNgoaTVwwJFKZ0H2gvHSqxDb_wQMtCmsgyAJfa8
+
+{
+    "refresh" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5NTI0ODk5MSwiaWF0IjoxNzk1MTYyNTkxLCJqdGkiOiJhMzk1NzI2YThmZDY0MWQyOWYxY2Q2MTRhYTI2NjUxMSIsInVzZXJfaWQiOiI0In0.gaoVTyBqrA3wrnuzP7tGfzSmBiNvHDTgNg-zImkZXS4"
+}
+
+
+
+### API for Adding tasks Using JWT Token
+POST  http://127.0.0.1:8000/api/tasks/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0ODc5LCJpYXQiOjE3OTUxNjQ1NzksImp0aSI6IjUzOGY2ZTNkMjYwODRhY2U4YTExN2FlMGNhYjUzNmI3IiwidXNlcl9pZCI6IjQifQ.gxpEqTKvZXefsJnHPyLKbeDQU-P3PqWK7c1Oo3Z7-jY
+
+{
+    "title" : "Factorial",
+    "description": "Python Program to find the factorial of a number",
+    "due_date": "2026-11-29"
+}
+
+###
+GET  http://127.0.0.1:8000/api/tasks/2/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0ODc5LCJpYXQiOjE3OTUxNjQ1NzksImp0aSI6IjUzOGY2ZTNkMjYwODRhY2U4YTExN2FlMGNhYjUzNmI3IiwidXNlcl9pZCI6IjQifQ.gxpEqTKvZXefsJnHPyLKbeDQU-P3PqWK7c1Oo3Z7-jY
+
+
+
+
+###
+PUT  http://127.0.0.1:8000/api/tasks/2/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0ODc5LCJpYXQiOjE3OTUxNjQ1NzksImp0aSI6IjUzOGY2ZTNkMjYwODRhY2U4YTExN2FlMGNhYjUzNmI3IiwidXNlcl9pZCI6IjQifQ.gxpEqTKvZXefsJnHPyLKbeDQU-P3PqWK7c1Oo3Z7-jY
+
+{
+    "title" : "Factorial",
+    "description": "Python Program to find the factorial of  5",
+    "due_date": "2026-11-20"
+}
+
+
+###
+DELETE   http://127.0.0.1:8000/api/tasks/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0ODc5LCJpYXQiOjE3OTUxNjQ1NzksImp0aSI6IjUzOGY2ZTNkMjYwODRhY2U4YTExN2FlMGNhYjUzNmI3IiwidXNlcl9pZCI6IjQifQ.gxpEqTKvZXefsJnHPyLKbeDQU-P3PqWK7c1Oo3Z7-jY
